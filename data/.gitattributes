@@ -1,0 +1,6 @@
+8989neg_newF1F2GL_fishers0.csv filter=lfs diff=lfs merge=lfs -text
+8989pos_newF1F2GL_fishers0.csv filter=lfs diff=lfs merge=lfs -text
+8079neg_newF1F2GL_fishers0.csv filter=lfs diff=lfs merge=lfs -text
+8079pos_newF1F2GL_fishers0.csv filter=lfs diff=lfs merge=lfs -text
+8975neg_newF1F2GL_fishers0.csv filter=lfs diff=lfs merge=lfs -text
+8975pos_newF1F2GL_fishers0.csv filter=lfs diff=lfs merge=lfs -text
