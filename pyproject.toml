@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "m6arp"
+version = "0.1.0"
+description = ""
+authors = ["Tassos Manganaris <tassos.manganaris@gmail.com>"]
+license = "GPL3+"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
