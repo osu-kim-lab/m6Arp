@@ -8,23 +8,52 @@ from numpy.random import RandomState, SeedSequence
 
 from sklearn import model_selection, metrics
 
+def load_input_csv(filepath, site):
+    '''Load per-read stats from a CSV file into a Pandas DataFrame'''
+    df = pd.read_csv(filepath, header=0, index_col=0).rename_axis('pos_0b', axis=1)
+    df.columns = df.columns.astype(int)
+    df.index = [x[2:-1] if x[0:2] == "b'" and x[-1] == "'" else x for x in df.index]
+    df = df.rename_axis('read_id')
+    df = df.stack().rename('pval').reset_index()
+
+    # read data and create useful columns
+    df = (df.assign(
+        site_0b = site
+    ).assign(
+        delta = lambda x: x['pos_0b'] - x['site_0b']
+    ))
+
+    # remove unnecessary positions
+    df = df.loc[
+        (RANGE_OF_BASES_TO_INCLUDE[0] <= df['delta'])
+        & (df['delta'] <= RANGE_OF_BASES_TO_INCLUDE[1])
+    ]
+
+    pivoted_labelled_df = df.pivot(
+        index='read_id',
+        columns='delta',
+        values='pval'
+    ).dropna()
+
+    return pivoted_labelled_df
+
 ###############################################################################
 #                                     data                                    #
 ###############################################################################
 
 LABELLED_DATA_LIST = {
-    8078: {'positive': '/fs/project/PAS1405/GabbyLee/project/m6A_modif/machine_learning/model_basedir/8079pos_newF1F2GL_fishers0.csv',
-           'negative': '/fs/project/PAS1405/General/tassosm/ROC_PR_curve/ctrl9kb_newF1F2GL_msc0.csv',
-           'read_dirs': ["/fs/project/PAS1405/General/tassosm/ROC_PR_curve/8079pos_single_fast5",
-                         "/fs/project/PAS1405/General/HIV_RNA_modification_dataset/ctrl9kb/ctrl9kb_single_fast5"]},
-    8974: {'positive': '/fs/project/PAS1405/GabbyLee/project/m6A_modif/machine_learning/model_basedir/8975pos_newF1F2GL_fishers0.csv',
-           'negative': '/fs/project/PAS1405/General/tassosm/ROC_PR_curve/ctrl9kb_newF1F2GL_msc0.csv',
-           'read_dirs': ["/fs/project/PAS1405/General/tassosm/ROC_PR_curve/8975pos_single_fast5",
-                         "/fs/project/PAS1405/General/HIV_RNA_modification_dataset/ctrl9kb/ctrl9kb_single_fast5"]},
-    8988: {'positive': '/fs/project/PAS1405/GabbyLee/project/m6A_modif/machine_learning/model_basedir/8989pos_newF1F2GL_fishers0.csv',
-           'negative': '/fs/project/PAS1405/General/tassosm/ROC_PR_curve/ctrl9kb_newF1F2GL_msc0.csv',
-           'read_dirs': ["/fs/project/PAS1405/General/tassosm/ROC_PR_curve/8989pos_single_fast5",
-                         "/fs/project/PAS1405/General/HIV_RNA_modification_dataset/ctrl9kb/ctrl9kb_single_fast5"]},
+    8078: {'positive': '../data/8079pos_newF1F2GL_fishers0.csv',
+           'negative': '../data/ctrl9kb_newF1F2GL_msc0.csv',
+           'read_dirs': ["8079pos_single_fast5",
+                         "ctrl9kb_single_fast5"]},
+    8974: {'positive': '../data/8975pos_newF1F2GL_fishers0.csv',
+           'negative': '../data/ctrl9kb_newF1F2GL_msc0.csv',
+           'read_dirs': ["8975pos_single_fast5",
+                         "ctrl9kb_single_fast5"]},
+    8988: {'positive': '../data/8989pos_newF1F2GL_fishers0.csv',
+           'negative': '../data/ctrl9kb_newF1F2GL_msc0.csv',
+           'read_dirs': ["8989pos_single_fast5",
+                         "ctrl9kb_single_fast5"]},
 }
 
 RANGE_OF_BASES_TO_INCLUDE = (-4, 1) # inclusive

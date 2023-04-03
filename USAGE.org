@@ -1,0 +1,19 @@
+* Inference
+
+To predict the presence of a modification, one needs to know the following things:
+
+1. A trained model
+2. A file containing per-read, per-position stats. These are generated with Tombo + prsconv3
+3. The site at which to make a prediction.
+
+One can then make predictions using our =inference.py= script like so.
+
+#+begin_src shell
+python inference.py --model ./pretrained/model8975.pkl \
+       --csv ./data/8975pos_newF1F2GL_fishers0.csv \
+       --site 8975 \
+       --output pred.csv
+#+end_src
+
+This will output a csv =pred.csv= with per-read predictions for the presence of
+a modification at the specified site.

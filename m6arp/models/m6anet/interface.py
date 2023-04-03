@@ -3,8 +3,6 @@ import sys
 import subprocess
 import pandas as pd
 
-# from scripts import train
-
 def read_is_in_dir(read, path):
     test_path = os.path.join(path, f"{read}.fast5")
     return os.path.exists(test_path)

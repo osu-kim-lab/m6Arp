@@ -1,3 +1,4 @@
+import pickle
 from sklearn import svm
 
 ###############################################################################
@@ -24,3 +25,7 @@ def trained_classifier(X_train, y_train):
 def train(X_train, y_train):
     classifier.fit(X_train, y_train)
     return classifier.decision_function
+
+def from_pickle(filepath):
+    with open(filepath, "rb") as f:
+        return pickle.load(f)
