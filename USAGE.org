@@ -14,7 +14,7 @@ To predict the presence of a modification, one needs to know the following thing
 
 1. A trained model (For example: [[file:pretrained/model8989.pkl]])
 2. A file containing per-read, per-position stats (For example: [[file:data/8989pos_newF1F2GL_fishers0.csv]]). These are generated with Tombo + prsconv3
-3. The site at which to make a prediction (For example: 8975).
+3. The site at which to make a prediction. The current models enable analysis at 3 m6a sites. These include 8079, 8975, and 8989.
 
 One can then make predictions using our =inference.py= script like so.
 
