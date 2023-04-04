@@ -26,7 +26,7 @@ python inference.py --model ./pretrained/model8975.pkl \
 #+end_src
 
 This will output a csv =pred.csv= with per-read predictions for the presence of
-a modification at the specified site. An example of this prediction is available
+a modification at the specified site for individual reads (read ID provided). An example of this prediction is available
 [[file:data/pred.csv][here]].
 
 * Example files
