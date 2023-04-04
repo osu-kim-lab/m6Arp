@@ -1,3 +1,13 @@
+* Getting Started
+
+This whole repository is available to download. It includes all of the
+pretrained models and data necessary for making predictions. If you are familiar
+with [[https://git-scm.com/][git]], you can clone this repository from the terminal like so:
+
+: git clone https://github.com/osu-kim-lab/m6Arp
+
+You can also individually download files from the links in the text below.
+
 * Inference
 
 To predict the presence of a modification, one needs to know the following things:
