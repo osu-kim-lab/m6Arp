@@ -31,7 +31,7 @@ HIV-1 exploits every aspect of RNA, a versatile macromolecule that undergoes var
 
 **USAGE**
 
-The complete methodology for training a model is described in the manuscript (supplementary note 2).
+The complete methodology for training a model is described in the manuscript (see Supplementary Note 2).
 
 The pretrained model can be executed by following the instructions in the USAGE.org file. See (USAGE.org).
 
