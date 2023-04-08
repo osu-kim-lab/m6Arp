@@ -105,8 +105,42 @@ def prepare_labelled_data(site, labelled_data_list=LABELLED_DATA_LIST):
 
     return pivoted_labelled_df
 
-def get_randomized_data(site):
-    pivoted_labelled_df = prepare_labelled_data(site)
+def prepare_labelled_data_from_files(site, positive_csv, negative_csv):
+    """The Kim Model makes a prediction about a modified site based on the Tombo
+    MSC values surrounding that site in the read."""
+
+    to_concat = []
+    for filepath, positive in [(positive_csv, True),
+                               (negative_csv, False)]:
+        # read data and create useful columns
+        df = ( # pylint: disable=invalid-name
+            longify(load_csv(filepath))
+            .assign(
+                positive = positive,
+                site_0b = site
+            ).assign(
+                delta = lambda x: x['pos_0b'] - x['site_0b']
+            )
+        )
+        # remove unnecessary positions
+        df = df.loc[
+            (RANGE_OF_BASES_TO_INCLUDE[0] <= df['delta'])
+            & (df['delta'] <= RANGE_OF_BASES_TO_INCLUDE[1])
+        ]
+        to_concat.append(df)
+        del df
+
+    labelled_df = pd.concat(to_concat)
+    pivoted_labelled_df = labelled_df.pivot(
+        index=['positive', 'read_id'],
+        columns='delta',
+        values='pval'
+    ).dropna()
+
+    return pivoted_labelled_df
+
+def get_randomized_data(site, positive_csv, negative_csv):
+    pivoted_labelled_df = prepare_labelled_data_from_files(site, positive_csv, negative_csv)
     Xy_df = pivoted_labelled_df.reset_index(level=0).astype("float64")
     Xy_df = Xy_df[[*Xy_df.columns[1:], Xy_df.columns[0]]]
 

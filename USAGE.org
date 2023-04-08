@@ -8,6 +8,16 @@ with [[https://git-scm.com/][git]], you can clone this repository from the termi
 
 You can also individually download files from the links in the text below.
 
+* Training
+
+#+begin_src shell
+python train.py \
+       --positive-csv "./data/8975pos_newF1F2GL_fishers0.csv" \
+       --negative-csv "./data/8975neg_newF1F2GL_fishers0.csv" \
+       --site 8975 \
+       --output "new-model.pkl"
+#+end_src
+
 * Inference
 
 To predict the presence of a modification, one needs to know the following things:
