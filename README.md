@@ -1,5 +1,5 @@
 # Single-molecule epitranscriptomic analysis of full-length HIV-1 RNAs reveals functional roles of site-specific m6As
-Alice Baek<sup>1,2,3#</sup>, Ga-Eun Lee<sup>1,2,3,4#</sup>, Sarah Golconda<sup>1,2,3</sup>, Asif Rayhan<sup>5</sup>, Anastasios A. Manganaris<sup>4,6</sup>, Shuliang Chen<sup>1,2</sup>, Nagaraja Tirumuru<sup>1,2</sup>, Hannah Yu<sup>1,2,3</sup>, Shihyoung Kim<sup>1,2,3</sup>, Christopher Kimmel<sup>2,4</sup>, Olivier Zablocki<sup>7,8</sup>, Matthew B Sullivan<sup>7,8,9</sup>, Balasubrahmanyam Addepalli<sup>5</sup>, Li Wu<sup>10</sup>, and Sanggu Kim<sup>1,2,3,4*</sup>
+Alice Baek<sup>1,2,3#</sup>, Ga-Eun Lee<sup>1,2,3,4#</sup>, Sarah Golconda<sup>1,2,3</sup>, Asif Rayhan<sup>5</sup>, Anastasios A. Manganaris<sup>4,6</sup>, Shuliang Chen<sup>1,2</sup>, Nagaraja Tirumuru<sup>1,2</sup>, Hannah Yu<sup>1,2,3</sup>, Shihyoung Kim<sup>1,2,3</sup>, Christopher Kimmel<sup>2,4</sup>, Olivier Zablocki<sup>7,8</sup>, Matthew B Sullivan<sup>7,8,9</sup>, Balasubrahmanyam Addepalli<sup>5</sup>, Li Wu<sup>10</sup>, and Sanggu Kim<sup>1,2,3,4,11*</sup>
 
 <sup>1</sup>Center for Retrovirus Research, The Ohio State University, Columbus, OH, USA
 
@@ -21,6 +21,8 @@ Alice Baek<sup>1,2,3#</sup>, Ga-Eun Lee<sup>1,2,3,4#</sup>, Sarah Golconda<sup>1
 
 <sup>10</sup>Department of Microbiology and Immunology, Carver College of Medicine, University of Iowa, Iowa City, IA, USA.
 
+<sup>11</sup>Center for RNA Biology, The Ohio State University, Columbus, OH, USA.
+
 <sup>#</sup>These authors contributed equally: Alice Baek, Ga-Eun Lee
 
 <sup>*</sup>Corresponding author: Sanggu Kim,✉e-mail:kim.6477@osu.edu
@@ -31,7 +33,7 @@ Although the significance of chemical modifications on RNA is acknowledged, the 
 
 **USAGE**
 
-The complete methodology for training a model is described in the manuscript (see Supplementary Note 2).
+The complete methodology for training a model is described in the manuscript (see Methods).
 
 The pretrained model can be executed by following the instructions in the USAGE.org file. See (USAGE.org).
 
